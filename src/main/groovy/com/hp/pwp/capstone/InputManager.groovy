@@ -10,18 +10,33 @@ class InputManager{
 
 		Integer i = 0;
 		beanstalk.useTube("new_work");
-		String s = "{" + "'path': '/mnt/Test.pdf'," + "'outputPath': '/mnt/FinalPDF.pdf'," + "'WID': 1019," + "'JID': 1109," + "'pdfLength': 9" + "}";
+
+	//String s = "{" + "'path': '/mnt/TestPDF.pdf'," + "'outputPath': '/mnt/FinalPDF.pdf'," + "'WID': 1019," + "'JID': 1109," + "'pdfLength': 9" + "}"
+		String s ='{' +
+			'"jobBool": true,' +
+			'"path": "/mnt/TestPDF.pdf",' +
+			'"outPath": "/mnt/FinalPDF.pdf",'+
+			'"pageLength": 9,'+
+			'"startPage": 1,'+
+			'"endPage": 9,'+
+			'"wid": 1019,'+
+			'"jid": 1109,'+
+			'"status": "done"' + '}';
+
+			
+		
 		beanstalk.sendWork(s);
-/*		while(true){
-			print "Enter a string for system input: ";
-			String input = System.in.newReader().readLine();
+		println beanstalk.recieve_new_work();
+		/*		while(true){
+				print "Enter a string for system input: ";
+				String input = System.in.newReader().readLine();
 
-			sleep(1000);
-			beanstalk.sendWork(input);
-			i++;
+				sleep(1000);
+				beanstalk.sendWork(input);
+				i++;
 
-		}
-*/
+				}
+		 */
 		return;
 	}
 
